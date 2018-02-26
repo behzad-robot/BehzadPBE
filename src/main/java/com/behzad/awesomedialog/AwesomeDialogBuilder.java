@@ -29,10 +29,15 @@ public class AwesomeDialogBuilder
     }
 
     //TODO:implement for all fields: all functions must return this;
+    public AwesomeDialogBuilder title(String title){
+        this.settings.title = title;
+        return this;
+    }
     public AwesomeDialogBuilder showAnim(AwesomeDialogAnimation showAnim){
         this.settings.showAnim = showAnim;
         return this;
     }
+
     //end
     //region customized , ready dialogs:
     public AwesomeDialogBuilder defaultTest(){
@@ -62,6 +67,7 @@ public class AwesomeDialogBuilder
         };
         this.settings.hideAnim = null;
         this.settings.hideDialogAnim = null;
+        return this;
     }
     public AwesomeDialogBuilder fade(){
         this.settings.showAnim = null;
