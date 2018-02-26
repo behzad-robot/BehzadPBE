@@ -20,5 +20,4 @@ class MyApplication : Application() {
         userManager = UserManager(this);
         apiManager = ServiceManager(this);
     }
-    
 }

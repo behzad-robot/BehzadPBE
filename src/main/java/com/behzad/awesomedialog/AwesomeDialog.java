@@ -34,6 +34,7 @@ public class AwesomeDialog
     private View overlay;
     private TextView titleView , bodyView , postiveBtnView , negativeBtnView , naturalBtnView;
     private FrameLayout customViewContainer;
+    private boolean isAnimating = false;
 
     private AwesomeDialogSettings settings;
     public AwesomeDialog(Context context,AwesomeDialogSettings settings)
@@ -96,6 +97,8 @@ public class AwesomeDialog
     }
     //region public interface
     public void show() {
+        if(isAnimating)
+            return;
         //override null values:
         if(settings.showAnim == null)
             settings.showAnim = getDefaultShowAnim();
@@ -108,6 +111,7 @@ public class AwesomeDialog
         //add view:
         addView();
         //show anim:
+        isAnimating = true;
         settings.showAnim.animate(view);
         alertView.setVisibility(View.INVISIBLE);
         //show custom view anim:
@@ -129,13 +133,17 @@ public class AwesomeDialog
                     settings.showButtonAnim.animate(negativeBtnView);
                 if(!AwesomeDialogSettings.isEmpty(settings.naturalBtn))
                     settings.showButtonAnim.animate(naturalBtnView);
+                naturalBtnView.postDelayed(()->{
+                    isAnimating = false;
+                },settings.showButtonAnim.getDuration());
 
             },settings.showDialogAnim.getDuration());
 
         }, settings.showAnim.getDuration());
     }
     public void hide() {
-
+        if(isAnimating)
+            return;
         //override null values:
         if(settings.hideAnim == null)
             settings.hideAnim = getDefaultHideAnim();
@@ -146,6 +154,7 @@ public class AwesomeDialog
         if(settings.hideCustomViewAnim == null)
             settings.hideCustomViewAnim = getEmptyAnim();
         //hide button animations:
+        isAnimating = true;
         if(!AwesomeDialogSettings.isEmpty(settings.positiveBtn))
             settings.hideButtonAnim.animate(postiveBtnView);
         if(!AwesomeDialogSettings.isEmpty(settings.negativeBtn))
@@ -177,6 +186,7 @@ public class AwesomeDialog
     public AwesomeDialogSettings getSettings(){
         return settings;
     }
+    public View getAlertView(){return alertView;}
     //endregion
 
     //helpers:
@@ -191,6 +201,7 @@ public class AwesomeDialog
         getWindowManager().addView(view, params);
     }
     private void removeView(){
+        isAnimating = false;
         getWindowManager().removeView(view);
     }
     private WindowManager getWindowManager(){

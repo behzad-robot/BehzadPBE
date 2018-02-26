@@ -2,12 +2,16 @@ package com.behzad.behzadpbe.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import com.behzad.awesomedialog.AwesomeDialog
-import com.behzad.awesomedialog.AwesomeDialogSettings
+import com.behzad.awesomedialog.AwesomeDialogBuilder
 import com.behzad.behzadpbe.R
+import com.behzad.behzadpbe.app.GlideApp
+
 import com.behzad.models.User
-import com.squareup.haha.perflib.Main
+import com.behzad.myglideview.MyGlideView
+import com.behzad.myglideview.indicators.BallBeatIndicator
+import com.bumptech.glide.request.RequestOptions
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -98,13 +102,30 @@ class MainActivity : BaseActivity(){
         button4.setOnClickListener({
             //var dialog : AwesomeDialog = AwesomeDialog(this , ":|" , "hello" , "yes","no");
             //AwesomeDialog(this , ":|" , "hello" , "yes","no" , null);
-            var settings : AwesomeDialogSettings = AwesomeDialogSettings();
+         /*   var settings : AwesomeDialogSettings = AwesomeDialogSettings();
             settings.title = ":) hello";
             settings.body = "testing body";
             settings.naturalBtn = "DONUT care";
-            AwesomeDialog(this , settings).show();
-        });
+            AwesomeDialog(this , settings).show(); //new AwesomeDialog(this,settings).show();*/
 
+            var a = AwesomeDialogBuilder(this)
+                    .title("Hello World")
+                    .body("Go fuck ur self")
+                    .positiveBtn(":) Yes sure")
+                    .negativeBtn(":| ")
+                    .build();
+            a.show();
+        });
+        /*GlideApp.with(this)
+                .load("http://mobagym.com/ss/")
+                .error(R.drawable.ripple_bleach)
+                .into(imageView);*/
+
+        MyGlideView(imageView , "http://mobagym.com/ss" , RequestOptions());
+        /*val b = BallBeatIndicator()
+        b.color = Color.RED
+        imageView.setImageDrawable(b)
+        b.start()*/
 
     }
 

@@ -33,11 +33,55 @@ public class AwesomeDialogBuilder
         this.settings.title = title;
         return this;
     }
+    public AwesomeDialogBuilder body(String body){
+        this.settings.body = body;
+        return this;
+    }
+    public AwesomeDialogBuilder negativeBtn(String negativeBtn){
+        this.settings.negativeBtn = negativeBtn;
+        return this;
+    }
+    public AwesomeDialogBuilder naturalBtn(String naturalBtn){
+        this.settings.positiveBtn = naturalBtn;
+        return this;
+    }
+    public AwesomeDialogBuilder positiveBtn(String positiveBtn){
+        this.settings.positiveBtn = positiveBtn;
+        return this;
+    }
+
     public AwesomeDialogBuilder showAnim(AwesomeDialogAnimation showAnim){
         this.settings.showAnim = showAnim;
         return this;
     }
-
+    public AwesomeDialogBuilder showDialogAnim(AwesomeDialogAnimation showDialogAnim){
+        this.settings.showDialogAnim=showDialogAnim;
+        return this;
+    }
+    public AwesomeDialogBuilder showButtonAnim(AwesomeDialogAnimation showButtonAnim){
+        this.settings.showButtonAnim=showButtonAnim;
+        return this;
+    }
+    public AwesomeDialogBuilder hideAnim(AwesomeDialogAnimation showButtonAnim){
+        this.settings.showButtonAnim=showButtonAnim;
+        return this;
+    }
+    public AwesomeDialogBuilder hideDialogAnim(AwesomeDialogAnimation hideDialogAnim){
+        this.settings.hideDialogAnim=hideDialogAnim;
+        return this;
+    }
+    public AwesomeDialogBuilder hideButtonAnim(AwesomeDialogAnimation hideButtonAnim){
+        this.settings.hideButtonAnim=hideButtonAnim;
+        return this;
+    }
+    public AwesomeDialogBuilder showCustomViewAnim(AwesomeDialogAnimation showCustomViewAnim){
+        this.settings.showCustomViewAnim=showCustomViewAnim;
+        return this;
+    }
+    public AwesomeDialogBuilder hideCustomViewAnim(AwesomeDialogAnimation hideCustomViewAnim){
+        this.settings.hideCustomViewAnim=hideCustomViewAnim;
+        return this;
+    }
     //end
     //region customized , ready dialogs:
     public AwesomeDialogBuilder defaultTest(){
@@ -51,13 +95,13 @@ public class AwesomeDialogBuilder
         this.settings.hideDialogAnim = null;
         return this;
     }
-    public AwesomeDialogBuilder slideVertical(){
+    public AwesomeDialogBuilder slideFromTop(){
         this.settings.showAnim = null;
         this.settings.showDialogAnim = new AwesomeDialogAnimation() {
             @Override
             public void animate(View view) {
-                Animation animation = AnimationUtils.loadAnimation(view.getContext(), );
-                view.startAnimation(animation);
+                /*Animation animation = AnimationUtils.loadAnimation(view.getContext(), );
+                view.startAnimation(animation);*/
             }
 
             @Override
@@ -69,6 +113,8 @@ public class AwesomeDialogBuilder
         this.settings.hideDialogAnim = null;
         return this;
     }
+    //TODO: slideFromBottom()
+
     public AwesomeDialogBuilder fade(){
         this.settings.showAnim = null;
         this.settings.showDialogAnim = AwesomeDialog.getDefaultShowAnim();
