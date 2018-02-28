@@ -28,6 +28,11 @@ public class AwesomeDialogSettings
     public AwesomeDialogAnimation showCustomViewAnim;
     public AwesomeDialogAnimation hideCustomViewAnim;
 
+    public View.OnClickListener postiveBtnOnClick;
+    public View.OnClickListener negativeBtnOnClick;
+    public View.OnClickListener naturalBtnOnClick;
+
+
 
 
     public static boolean isEmpty(String str){

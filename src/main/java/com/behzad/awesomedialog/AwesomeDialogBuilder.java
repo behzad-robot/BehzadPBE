@@ -86,6 +86,19 @@ public class AwesomeDialogBuilder
         this.settings.hideCustomViewAnim=hideCustomViewAnim;
         return this;
     }
+    public AwesomeDialogBuilder positiveBtnOnClick(View.OnClickListener postiveBtnOnClick){
+        this.settings.postiveBtnOnClick = postiveBtnOnClick;
+        return  this;
+    }
+    public AwesomeDialogBuilder negativeBtnOnClick(View.OnClickListener negativeBtnOnClick){
+        this.settings.negativeBtnOnClick = negativeBtnOnClick;
+        return  this;
+    }
+    public AwesomeDialogBuilder naturalBtnOnClick(View.OnClickListener naturalBtnOnClick){
+        this.settings.naturalBtnOnClick = naturalBtnOnClick;
+        return this;
+    }
+
     //end
     //region customized , ready dialogs:
     public AwesomeDialogBuilder defaultTest(){

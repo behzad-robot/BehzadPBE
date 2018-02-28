@@ -88,9 +88,12 @@ public class AwesomeDialog
                 .delay(100)
                 .playOn(alertView);*/
         /**/
-
-
-
+        if(settings.postiveBtnOnClick != null)
+            postiveBtnView.setOnClickListener(settings.postiveBtnOnClick);
+        if(settings.negativeBtn != null)
+            negativeBtnView.setOnClickListener(settings.negativeBtnOnClick);
+        if(settings.naturalBtn != null)
+            naturalBtnView.setOnClickListener(settings.naturalBtnOnClick);
 
         //hide:
         overlay.setOnClickListener(v -> { hide(); });
