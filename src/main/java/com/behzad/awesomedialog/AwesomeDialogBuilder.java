@@ -4,9 +4,13 @@ import android.content.Context;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 
+import com.behzad.behzadpbe.R;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.daimajia.easing.Glider;
+import com.daimajia.easing.Skill;
 
 /**
  * Created by behzad on 23/02/18.
@@ -122,6 +126,53 @@ public class AwesomeDialogBuilder
         this.settings.hideDialogAnim = AwesomeDialog.getDefaultHideAnim();
         return  this;
     }
+    public AwesomeDialogBuilder bottomAlert(){
+        this.settings.showAnim = null;
+        this.settings.hideAnim = null;
+        this.settings.showDialogAnim = new AwesomeDialogAnimation() {
+            @Override
+            public void animate(View view) {
+                /*Animation animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.slide_in_bottom);
+                view.startAnimation(animation);*/
+                YoYo.with(Techniques.SlideInUp)
+                        .duration(400)
+                        .playOn(view);
+            }
 
+            @Override
+            public long getDuration() {
+                return 400;
+            }
+        };
+        this.settings.hideDialogAnim = new AwesomeDialogAnimation() {
+            @Override
+            public void animate(View view) {
+                YoYo.with(Techniques.SlideOutDown)
+                        .duration(400)
+                        .playOn(view);
+            }
+
+            @Override
+            public long getDuration() {
+                return 400;
+            }
+        };
+        this.settings.showButtonAnim = new AwesomeDialogAnimation() {
+            @Override
+            public void animate(View view) {
+                YoYo.with(Techniques.Pulse)
+                        .duration(500)
+                        .playOn(view);
+            }
+
+            @Override
+            public long getDuration() {
+                return 500;
+            }
+        };
+        this.settings.hideButtonAnim = AwesomeDialog.getEmptyAnim();
+        this.settings.resourceID = R.layout.awesome_alert_bottom;
+        return this;
+    }
     //endregion
 }

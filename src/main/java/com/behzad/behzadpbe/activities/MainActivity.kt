@@ -2,15 +2,12 @@ package com.behzad.behzadpbe.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import com.behzad.awesomedialog.AwesomeDialogBuilder
 import com.behzad.behzadpbe.R
-import com.behzad.behzadpbe.app.GlideApp
 
 import com.behzad.models.User
-import com.behzad.myglideview.MyGlideView
-import com.behzad.myglideview.indicators.BallBeatIndicator
+import com.behzad.myglideview.MyGlideHandler
 import com.bumptech.glide.request.RequestOptions
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
@@ -111,8 +108,9 @@ class MainActivity : BaseActivity(){
             var a = AwesomeDialogBuilder(this)
                     .title("Hello World")
                     .body("Go fuck ur self")
-                    .positiveBtn(":) Yes sure")
-                    .negativeBtn(":| ")
+                    .positiveBtn("OK")
+                    .negativeBtn("Nope!")
+                    .bottomAlert()
                     .build();
             a.show();
         });
@@ -121,7 +119,7 @@ class MainActivity : BaseActivity(){
                 .error(R.drawable.ripple_bleach)
                 .into(imageView);*/
 
-        MyGlideView(imageView , "http://mobagym.com/ss" , RequestOptions());
+        MyGlideHandler(imageView, "http://mobagym.com/ss", RequestOptions());
         /*val b = BallBeatIndicator()
         b.color = Color.RED
         imageView.setImageDrawable(b)

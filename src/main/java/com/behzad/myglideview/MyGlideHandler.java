@@ -21,11 +21,11 @@ import com.bumptech.glide.request.target.Target;
  * Created by user on 2/26/2018.
  */
 
-public class MyGlideView {
+public class MyGlideHandler {
     private ImageView imageView;
     private String url;
     private RequestOptions options;
-    public MyGlideView(ImageView imageView, String url, RequestOptions options){
+    public MyGlideHandler(ImageView imageView, String url, RequestOptions options){
         this.imageView = imageView;
         this.url = url;
         this.options = options;
@@ -48,10 +48,12 @@ public class MyGlideView {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
 
-                        BallBeatIndicator b = new BallBeatIndicator();
+                        /*BallBeatIndicator b = new BallBeatIndicator();
                         b.setColor(Color.RED);
                         imageView.setImageDrawable(b);
-                        b.start();
+                        b.start();*/
+                        imageView.setImageResource(R.drawable.reload);
+
                         imageView.setOnClickListener(v->{
                             load(true);
                         });
